@@ -7,19 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Services.interfaces;
 
 namespace IrisAccess
 {
-    public partial class Form2 : Form
+    public partial class DefaultEntityList : Form
     {
-        private IAttributesService _attributesService;
-        
-
-        public Form2(IAttributesService attributesService)
+        public DefaultEntityList()
         {
-            _attributesService = attributesService;
-            var attr = _attributesService.GetById(1);
             InitializeComponent();
         }
     }
