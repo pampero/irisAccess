@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Model.Helpers;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data;
 using System.Data.Entity;
+using System.Linq;
 using System.Linq.Expressions;
-using System.Security.Principal;
-
 
 namespace Model
 {
@@ -72,8 +71,10 @@ namespace Model
         public virtual void Insert(TEntity entity)
         {
             entity.Created = DateTime.Now;
+            entity.CreatedBy = UserHelper.GetCurrentUser();
 
             dbSet.Add(entity);
+            context.SaveChanges();
         }
 
         public virtual void Delete(object id)
@@ -87,6 +88,7 @@ namespace Model
         {
             entityToDelete.IsDeleted = true;
             entityToDelete.LastUpdated = DateTime.Now;
+            entityToDelete.LastUpdatedBy = UserHelper.GetCurrentUser();
 
             var entry = context.Entry(entityToDelete);
 
@@ -104,11 +106,14 @@ namespace Model
                 entry.CurrentValues.SetValues(entityToDelete);
                 entry.State = EntityState.Modified;
             }
+
+            context.SaveChanges();
         }
 
         public virtual void Update(TEntity entityToUpdate)
         {
             entityToUpdate.LastUpdated = DateTime.Now;
+            entityToUpdate.LastUpdatedBy = UserHelper.GetCurrentUser();
 
             var entry = context.Entry(entityToUpdate);
 
@@ -127,6 +132,8 @@ namespace Model
                 entry.CurrentValues.SetValues(entityToUpdate);
                 entry.State = EntityState.Modified;
             }
+
+            context.SaveChanges();
         }
 
         public virtual IEnumerable<TEntity> GetWithRawSql(string query, params object[] parameters)

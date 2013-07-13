@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -53,6 +54,13 @@ namespace IrisAccess
             {
                 childForm.Close();
             }
+        }
+
+        private void modelosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var childForm = new DefaultEntityList<HardwareModel>("Modelo");
+            childForm.MdiParent = this;
+            childForm.Show();
         }
     }
 }

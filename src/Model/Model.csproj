@@ -105,6 +105,7 @@
     <Compile Include="Model\Interfaces\ILastUpdateFields.cs" />
     <Compile Include="Model\Security\Account.cs" />
     <Compile Include="Model\Security\UserProfile.cs" />
+    <Compile Include="Repositories\Generic\DefaultEntityRepository.cs" />
     <Compile Include="Repositories\Generic\GenericReadOnlyRepository.cs" />
     <Compile Include="Repositories\Generic\GenericUpdatableRepository.cs" />
     <Compile Include="Repositories\Generic\UnitOfWork.cs" />
