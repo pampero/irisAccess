@@ -61,11 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\impl\AttributesService.cs" />
+    <Compile Include="Services\Implementations\AttributesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\interface\IAttributesService.cs" />
-    <Compile Include="Services\interface\IBaseService.cs" />
-    <Compile Include="Services\interface\IReadOnlyBaseService.cs" />
+    <Compile Include="Services\Interfaces\IAttributesService.cs" />
+    <Compile Include="Services\Interfaces\IBaseService.cs" />
+    <Compile Include="Services\Interfaces\IReadOnlyBaseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

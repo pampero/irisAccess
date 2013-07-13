@@ -41,9 +41,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -55,9 +52,6 @@
     <Reference Include="ServiceStack.Interfaces, Version=3.9.54.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ServiceStack.Common.3.9.54\lib\net35\ServiceStack.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="SolrNet">
-      <HintPath>..\packages\SolrNet.0.4.0.2002\SolrNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -94,25 +88,32 @@
     <Compile Include="BusinessRules\ValidationOperator.cs" />
     <Compile Include="DBInitializer\AppDbContext.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
+    <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Mappings\BaseClassMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\abstractions\AbstractReadOnlyClass.cs" />
-    <Compile Include="Model\abstractions\AbstractUpdatableClass.cs" />
-    <Compile Include="Model\entities\Attribute.cs" />
-    <Compile Include="Model\interfaces\ICreateFields.cs" />
-    <Compile Include="Model\interfaces\ICreateUpdateFields.cs" />
-    <Compile Include="Model\interfaces\IEntity.cs" />
-    <Compile Include="Model\interfaces\ILastUpdateFields.cs" />
-    <Compile Include="Model\security\Account.cs" />
-    <Compile Include="Model\security\UserProfile.cs" />
-    <Compile Include="Repositories\generic\GenericReadOnlyRepository.cs" />
-    <Compile Include="Repositories\generic\GenericUpdatableRepository.cs" />
-    <Compile Include="Repositories\generic\UnitOfWork.cs" />
-    <Compile Include="Repositories\impl\AttributesRepository.cs" />
-    <Compile Include="Repositories\interfaces\IAttributesRepository.cs" />
-    <Compile Include="Repositories\interfaces\IGenericUpdatableRepository.cs" />
-    <Compile Include="Repositories\interfaces\IGenericReadOnlyRepository.cs" />
-    <Compile Include="Repositories\interfaces\IUnitOfWork.cs" />
+    <Compile Include="Model\Abstractions\AbstractReadOnlyClass.cs" />
+    <Compile Include="Model\Abstractions\AbstractUpdatableClass.cs" />
+    <Compile Include="Model\Abstractions\DefaultEntity.cs" />
+    <Compile Include="Model\Entities\Attribute.cs" />
+    <Compile Include="Model\Entities\Address.cs" />
+    <Compile Include="Model\Entities\Area.cs" />
+    <Compile Include="Model\Entities\Door.cs" />
+    <Compile Include="Model\Entities\HardwareModel.cs" />
+    <Compile Include="Model\Interfaces\ICreateFields.cs" />
+    <Compile Include="Model\Interfaces\ICreateUpdateFields.cs" />
+    <Compile Include="Model\Interfaces\IEntity.cs" />
+    <Compile Include="Model\Interfaces\ILastUpdateFields.cs" />
+    <Compile Include="Model\Security\Account.cs" />
+    <Compile Include="Model\Security\UserProfile.cs" />
+    <Compile Include="Repositories\Generic\GenericReadOnlyRepository.cs" />
+    <Compile Include="Repositories\Generic\GenericUpdatableRepository.cs" />
+    <Compile Include="Repositories\Generic\UnitOfWork.cs" />
+    <Compile Include="Repositories\Implementations\AttributesRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDefaultEntityRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IAttributesRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IGenericUpdatableRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IGenericReadOnlyRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Validation.Helper.cs" />
   </ItemGroup>
@@ -126,10 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mappings\converters\" />
-    <Folder Include="Model\enums\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PostDeploymentScripts\PostDeployment.Masters.sql" />
+    <Folder Include="Model\Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

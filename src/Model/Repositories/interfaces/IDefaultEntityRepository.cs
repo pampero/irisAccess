@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Model.Repositories.interfaces
 {
-    public interface IGenericUpdatableRepository<T>
+    public interface IDefaultEntityRepository<T> where T : DefaultEntity
     {
         List<T> GetAll();
         IQueryable<T> Query();

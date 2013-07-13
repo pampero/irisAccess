@@ -1,13 +1,10 @@
-﻿using System;
-using System.Web;
-using System.ComponentModel;
-using System.Collections.Generic;
-using Model.Interfaces;
+﻿using Model.Interfaces;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Model
 {
-    public abstract class AbstractReadOnlyClass: ICreateFields
+    public abstract class AbstractReadOnlyClass : ICreateFields
     {
         private bool _isDeleted;
        

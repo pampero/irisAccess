@@ -1,13 +1,11 @@
-﻿using System;
-using System.Web;
-using System.ComponentModel;
+﻿using Model.Interfaces;
+using System;
 using System.Collections.Generic;
-using Model.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
 namespace Model
 {
-    public abstract class AbstractUpdatableClass: ICreateUpdateDeleteFields
+    public abstract class AbstractUpdatableClass : ICreateUpdateDeleteFields
     {
         protected static readonly string _versionDefault = "NotSet";
         private List<BusinessRule> _businessRules = new List<BusinessRule>();
@@ -54,7 +52,6 @@ namespace Model
             _businessRules.Add(rule);
         }
 
-
         public bool Validate()
         {
             bool isValid = true;
@@ -69,10 +66,8 @@ namespace Model
                     _validationErrors.Add(rule.ErrorMessage);
                 }
             }
+
             return isValid;
         }
-
-
-       
     }
 }

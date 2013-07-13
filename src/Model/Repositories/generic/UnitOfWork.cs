@@ -1,8 +1,8 @@
-﻿using System;
-using System.Data.Common;
-using Model.Repositories.impl;
+﻿using Model.Repositories.impl;
 using Model.Repositories.interfaces;
 using ServiceStack.Logging;
+using System;
+using System.Data.Common;
 
 namespace Model
 {
@@ -19,12 +19,10 @@ namespace Model
             _appDbContext = appDbContext;
         }
 
-
-        //public DbConnection GetConnection()
-        //{
-        //    return _appDbContext.Database.Connection;
-        //}
-
+        public DbConnection GetConnection()
+        {
+            return _appDbContext.Database.Connection;
+        }
 
         public IAttributesRepository AttributesRepository
         {
@@ -37,7 +35,6 @@ namespace Model
                 return _attributesRepository;
             }
         }
-
 
         public void Save()
         {
@@ -63,6 +60,5 @@ namespace Model
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
     }
 }

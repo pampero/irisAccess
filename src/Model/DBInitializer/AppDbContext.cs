@@ -1,16 +1,11 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Framework.Models;
-using Model.Mappings;
 
 namespace Model
 {
-    
     public class AppDbContext: DbContext
     {
-        public AppDbContext()
-            : base("Name=AppDbContext")
+        public AppDbContext() : base("Name=AppDbContext")
         {
             this.Configuration.LazyLoadingEnabled = true;
             Configuration.AutoDetectChangesEnabled = true;
@@ -18,7 +13,11 @@ namespace Model
 
         public DbSet<Attribute> Attributes { get; set; }
         public DbSet<Rol> Roles { get; set; }
-        public DbSet<UserProfile> UserProfiles{ get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Area> Areas { get; set; }
+        public DbSet<Door> Doors { get; set; }
+        public DbSet<HardwareModel> HardwareModels { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
