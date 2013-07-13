@@ -1,0 +1,7 @@
+-. Crear el siguiente alias de base de datos desde Sql Server Configuration
+
+Alias Name: IrisAccessDbServer
+Pipe Name: \\.\pipe\MSSQL$sqlexpress2008\sql\query 
+Protocol: Named Pipes
+Server: .
+

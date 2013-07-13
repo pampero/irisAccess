@@ -1,0 +1,83 @@
+SVN
+https://www.divergames.com.ar/svn/GC
+
+Entity Framework 5. Performance
+http://www.sql-server-performance.com/2012/entity-framework-performance-optimization/
+
+Automapper
+https://github.com/AutoMapper/AutoMapper
+http://jhonnyslopez.wordpress.com/2012/07/14/adaptando-de-manera-sencilla-con-automapper-nuestros-data-transfer-objects-dto-entity-framework-wcf-c/
+http://www.codeproject.com/Articles/61629/AutoMapper
+
+Faceted Search Best Practices
+http://searchuserinterfaces.com/book/
+http://www.uxmatters.com/mt/archives/2009/09/best-practices-for-designing-faceted-search-filters.php
+http://www.thingsontop.com/3-quick-patterns-better-facet-design-889.html
+http://isquared.wordpress.com/2009/07/19/ui-design-patterns-for-search-information-discovery/
+http://www.flickr.com/photos/morville/collections/72157603785835882/
+
+SimpleMembershipProvider
+http://weblogs.asp.net/jgalloway/archive/2012/08/29/simplemembership-membership-providers-universal-providers-and-the-new-asp-net-4-5-web-forms-and-asp-net-mvc-4-templates.aspx
+
+ImageCaching
+Ver web.config
+Utilizado para activar el módulo ImageResizer, ojo que podría provocar una pequeña baja en performance al usar runAllManagedModulesForAllRequests="true". 
+    
+Para obtener el efecto deseado solo se debe agregar al path de la imagen los parametros detallados en la url siguiente.
+http://imageresizing.net/docs/basics
+    
+Ejemplo: http://localhost:1586/images/felipe.jpg?width=100
+    
+Sería ideal utilizarlo con el plugin de caching para cachear automaticamente imagenes modificadas y solo almacenar imagenes originales. Cuesta 250usd con un pack de plugins.
+http://imageresizing.net/plugins/diskcache
+TODO: Investigar si esto puede ser instalado en el servidor estático.
+http://imageresizing.net/docs/best-practices
+   
+Fuel UX extends Twitter Bootstrap with additional lightweight JavaScript control
+http://exacttarget.github.io/fuelux/
+
+// Subir Redis y descomentar para usar session y caché
+//this.Session["Dato"] = 1;
+//var sessionData = Session["Dato"];
+
+//this.Cache.Set("Dato", 1);
+//var dato = this.Cache.Get<int>("Dato");
+
+Binding para KOjs al presionar enter en cualquier control. No funciona con AutoComplete
+//ko.bindingHandlers.executeOnEnter = {
+//    init: function (element, valueAccessor, allBindingsAccessor, businessesViewModel) {
+//        var allBindings = allBindingsAccessor();
+//        $(element).keypress(function (event) {
+//            var keyCode = (event.which ? event.which : event.keyCode);
+//            if (keyCode === 13) {
+//                allBindings.value($(element).val()); //set the value of the observable early because often the function you call on the next line wants to reference it
+//                allBindings.executeOnEnter.call(businessesViewModel);
+//                return false;
+//            }
+//            return true;
+//        });
+//    }
+//};
+
+Edición de propiedades Navegables con EF - MVC:
+
+Para editar obtener el objeto a editar del contexto (GetById), una vez cargado, si se desea cambiar un atributo que no sea de NAVEGACION se debe cambiarlo manualmente y hacer update cuya única acción (al estar ya cargado en el contexto) será cambiar el estado del objeto EF a Modified. 
+Si para cambiar las propiedades se usa Automapper este provoca que la entidad se detache del contexto por lo que update vuelve a cargarla y luego hace el update.
+
+ public ActionResult Edit(int id, Business business)
+        {
+            var businessAttached = _businessService.GetById(business.ID);
+
+            businessAttached.Attributes.Clear();
+
+            foreach (var attribute in business.Attributes)
+            {
+                businessAttached.Attributes.Add(_attributesService.GetById(attribute.ID));
+            }
+
+            businessAttached = Mapper.Map<Business, Business>(business); 
+
+            _businessService.Update(businessAttached);
+            
+            return RedirectToAction("Index");
+        }

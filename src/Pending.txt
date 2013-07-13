@@ -1,0 +1,12 @@
+Seguridad. Modelo casi creado pero falta encriptar la password. Tengo el código.
+Mejorar inyección de dependecias, ver como se resuelve en WinForms con Funq, que no lleve mas de 1 hora.
+Verificar que funcione el log4net en las distintas capas.
+Hacer el modelo en la carpeta Model.
+
+----------------------------------------------------------------------------------------
+
+Servicios
+
+IAdministrationService -- AdministrationService
+IValidationService  - ValidationService --> Este servicio tiene que tener adentro otra Interface que es la que se instanciará en el modelo actual de hardware con algunos metodos como
+ReadEye, ReadEyeFailure, etc, esta será intercambiable a medida que surjan nuevos modelos, por eso debe ser una interfaz y según la tabla de ips es el modelo que tiene y la dll que usará.
