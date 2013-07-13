@@ -33,13 +33,13 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.defaultEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.defaultEntityGrid = new System.Windows.Forms.DataGridView();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.defaultEntityBindingSource)).BeginInit();
+            this.defaultEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.defaultEntityGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.defaultEntityBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -84,10 +84,6 @@
             this.txtSearch.Size = new System.Drawing.Size(269, 20);
             this.txtSearch.TabIndex = 4;
             // 
-            // defaultEntityBindingSource
-            // 
-            this.defaultEntityBindingSource.DataSource = typeof(Model.DefaultEntity);
-            // 
             // defaultEntityGrid
             // 
             this.defaultEntityGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -102,6 +98,8 @@
             this.defaultEntityGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.defaultEntityGrid.Size = new System.Drawing.Size(431, 323);
             this.defaultEntityGrid.TabIndex = 6;
+            this.defaultEntityGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.defaultEntityGrid_CellContentClick);
+            this.defaultEntityGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.defaultEntityGrid_CellDoubleClick);
             // 
             // Description
             // 
@@ -126,6 +124,10 @@
             this.btnDelete.Text = "Borrar";
             this.btnDelete.UseColumnTextForButtonValue = true;
             // 
+            // defaultEntityBindingSource
+            // 
+            this.defaultEntityBindingSource.DataSource = typeof(Model.DefaultEntity);
+            // 
             // DefaultEntityList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,8 +140,8 @@
             this.Controls.Add(this.btnClose);
             this.Name = "DefaultEntityList";
             this.Text = "DefaultEntityList";
-            ((System.ComponentModel.ISupportInitialize)(this.defaultEntityBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.defaultEntityGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.defaultEntityBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

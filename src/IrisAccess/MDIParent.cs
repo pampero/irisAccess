@@ -18,14 +18,28 @@ namespace IrisAccess
         public MDIParent()
         {
             InitializeComponent();
+
+            this.AddDefaultEntityMenu<HardwareModel>("Modelo");
+            this.AddDefaultEntityMenu<Area>("Area");
+            this.AddDefaultEntityMenu<Door>("Puerta");
+            this.AddDefaultEntityMenu<Address>("Edificio");
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
+        private void AddDefaultEntityMenu<TEntity>(string entityName) where TEntity : DefaultEntity, new()
         {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
+            var item = new ToolStripMenuItem
+            {
+                Text = entityName + "s",
+            };
+
+            item.Click += delegate(object o, EventArgs e)
+            {
+                var form = new DefaultEntityList<TEntity>(entityName);
+                form.MdiParent = this;
+                form.Show();
+            };
+
+            entitiesToolStripMenuItem.DropDownItems.Add(item);
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -54,13 +68,6 @@ namespace IrisAccess
             {
                 childForm.Close();
             }
-        }
-
-        private void modelosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var childForm = new DefaultEntityList<HardwareModel>("Modelo");
-            childForm.MdiParent = this;
-            childForm.Show();
         }
     }
 }

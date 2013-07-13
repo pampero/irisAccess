@@ -6,6 +6,8 @@ namespace IrisAccess
 {
     public partial class DefaultEntityUpdate<TEntity> : Form where TEntity : DefaultEntity, new()
     {
+        private TEntity _entity;
+
         public string DescriptionResult
         {
             get
@@ -14,13 +16,14 @@ namespace IrisAccess
             }
         }
 
-        public DefaultEntityUpdate(string entityName, string description = null)
+        public DefaultEntityUpdate(string entityName, TEntity entity = null)
         {
             InitializeComponent();
 
             this.Text = entityName + "s";
-            lblEntityName.Text = (description == null ? "Alta de " : "Modificación de ") + entityName;
-            txtDescription.Text = description;
+            this._entity = entity;
+            lblEntityName.Text = (entity == null ? "Alta de " : "Modificación de ") + entityName;
+            txtDescription.Text = entity != null ? entity.Description : string.Empty;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -31,6 +34,11 @@ namespace IrisAccess
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            if (_entity != null)
+            {
+                _entity.Description = txtDescription.Text;
+            }
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
