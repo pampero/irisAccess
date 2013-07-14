@@ -13,8 +13,6 @@ namespace IrisAccess
 {
     public partial class MDIParent : Form
     {
-        private int childFormNumber = 0;
-
         public MDIParent()
         {
             InitializeComponent();
@@ -36,6 +34,7 @@ namespace IrisAccess
             {
                 var form = new DefaultEntityList<TEntity>(entityName);
                 form.MdiParent = this;
+
                 form.Show();
             };
 
