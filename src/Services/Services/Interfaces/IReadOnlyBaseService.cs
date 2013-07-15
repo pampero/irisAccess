@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Model;
 
-namespace Services.interfaces
+namespace Services.Interfaces
 {
     public interface IReadOnlyBaseService<TEntity>
     {

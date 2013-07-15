@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Services.interfaces
+namespace Services.Interfaces
 {
     public interface IBaseService<TEntity>
     {

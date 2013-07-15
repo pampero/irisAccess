@@ -1,10 +1,11 @@
-﻿using Model;
+﻿using IrisAccess.Extensions;
+using Model;
 using System;
 using System.Windows.Forms;
 
-namespace IrisAccess
+namespace IrisAccess.Forms
 {
-    public partial class DefaultEntityUpdate<TEntity> : Form where TEntity : DefaultEntity, new()
+    public partial class DefaultEntityUpdate<TEntity> : BaseForm where TEntity : DefaultEntity, new()
     {
         private TEntity _entity;
 

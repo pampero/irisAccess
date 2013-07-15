@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Model.Repositories.interfaces
+namespace Model.Repositories.Interfaces
 {
     public interface IGenericUpdatableRepository<T>
     {
-        List<T> GetAll();
         IQueryable<T> Query();
 
         IEnumerable<T> Get(

@@ -1,33 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
 
 namespace Model
 {
-    public class Rol
+    public class UserProfile : AbstractUpdatableClass
     {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
+        [StringLength(20)]
+        public string FileId { get; set; }
 
-
-    public class UserProfile
-    {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
-        public string UserName { get; set; }
+        [StringLength(100)]
         public string FirstName { get; set; }
+
+        [StringLength(100)]
         public string LastName { get; set; }
+
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return this.FirstName + " " + this.LastName;
+            }
+        }
+
+        [StringLength(120)]
         public string Email { get; set; }
-        public string Password { get; set; }
-        public Rol Rol { get; set; }
+
+        [StringLength(20)]
+        public string Identification { get; set; }
+
+        public bool IsMale { get; set; }
+
+        public DateTime? Birthdate { get; set; }
     }
 }

@@ -11,8 +11,6 @@ namespace Model
             Configuration.AutoDetectChangesEnabled = true;
         }
 
-        public DbSet<Attribute> Attributes { get; set; }
-        public DbSet<Rol> Roles { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Area> Areas { get; set; }

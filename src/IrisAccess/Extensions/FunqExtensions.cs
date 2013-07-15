@@ -1,8 +1,6 @@
 ﻿using Model;
-using Model.Repositories.impl;
-using Model.Repositories.interfaces;
-using Services.impl;
-using Services.interfaces;
+using Model.Repositories.Interfaces;
+using Services.Interfaces;
 using ServiceStack.Logging;
 
 public static class FunqExtensions
@@ -13,7 +11,5 @@ public static class FunqExtensions
         container.Register(new AppDbContext());
 
         container.RegisterAutoWiredAs<UnitOfWork, IUnitOfWork>();
-        container.RegisterAutoWiredAs<AttributesRepository, IAttributesRepository>();
-        container.RegisterAutoWiredAs<AttributesService, IAttributesService>();      
     }
 }

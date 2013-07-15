@@ -96,7 +96,6 @@
     <Compile Include="Model\Abstractions\AbstractReadOnlyClass.cs" />
     <Compile Include="Model\Abstractions\AbstractUpdatableClass.cs" />
     <Compile Include="Model\Abstractions\DefaultEntity.cs" />
-    <Compile Include="Model\Entities\Attribute.cs" />
     <Compile Include="Model\Entities\Address.cs" />
     <Compile Include="Model\Entities\Area.cs" />
     <Compile Include="Model\Entities\Door.cs" />
@@ -105,15 +104,12 @@
     <Compile Include="Model\Interfaces\ICreateUpdateFields.cs" />
     <Compile Include="Model\Interfaces\IEntity.cs" />
     <Compile Include="Model\Interfaces\ILastUpdateFields.cs" />
-    <Compile Include="Model\Security\Account.cs" />
     <Compile Include="Model\Security\UserProfile.cs" />
     <Compile Include="Repositories\Generic\DefaultEntityRepository.cs" />
     <Compile Include="Repositories\Generic\GenericReadOnlyRepository.cs" />
     <Compile Include="Repositories\Generic\GenericUpdatableRepository.cs" />
     <Compile Include="Repositories\Generic\UnitOfWork.cs" />
-    <Compile Include="Repositories\Implementations\AttributesRepository.cs" />
     <Compile Include="Repositories\Interfaces\IDefaultEntityRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IAttributesRepository.cs" />
     <Compile Include="Repositories\Interfaces\IGenericUpdatableRepository.cs" />
     <Compile Include="Repositories\Interfaces\IGenericReadOnlyRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUnitOfWork.cs" />
@@ -131,6 +127,7 @@
   <ItemGroup>
     <Folder Include="Mappings\converters\" />
     <Folder Include="Model\Enums\" />
+    <Folder Include="Repositories\Implementations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.Repositories.interfaces
+namespace Model.Repositories.Interfaces
 {
     public interface IGenericReadOnlyRepository<T>
     {
@@ -19,5 +19,7 @@ namespace Model.Repositories.interfaces
 
         T GetByID(object id);
         IEnumerable<T> GetWithRawSql(string query, params object[] parameters);
+
+
     }
 }

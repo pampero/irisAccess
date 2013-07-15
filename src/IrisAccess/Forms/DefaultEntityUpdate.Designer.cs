@@ -1,4 +1,4 @@
-﻿namespace IrisAccess
+﻿namespace IrisAccess.Forms
 {
     partial class DefaultEntityUpdate<TEntity>
     {
@@ -37,10 +37,11 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(197, 64);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 0;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -50,7 +51,7 @@
             this.btnOk.Location = new System.Drawing.Point(116, 64);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 1;
+            this.btnOk.TabIndex = 2;
             this.btnOk.Text = "Aceptar";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -60,7 +61,7 @@
             this.txtDescription.Location = new System.Drawing.Point(87, 38);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(185, 20);
-            this.txtDescription.TabIndex = 2;
+            this.txtDescription.TabIndex = 1;
             // 
             // lblDescription
             // 
@@ -68,7 +69,7 @@
             this.lblDescription.Location = new System.Drawing.Point(15, 41);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(66, 13);
-            this.lblDescription.TabIndex = 3;
+            this.lblDescription.TabIndex = 0;
             this.lblDescription.Text = "Descripción:";
             // 
             // lblEntityName
@@ -77,19 +78,22 @@
             this.lblEntityName.Location = new System.Drawing.Point(18, 13);
             this.lblEntityName.Name = "lblEntityName";
             this.lblEntityName.Size = new System.Drawing.Size(71, 13);
-            this.lblEntityName.TabIndex = 4;
+            this.lblEntityName.TabIndex = 0;
             this.lblEntityName.Text = "lblEntityName";
             // 
             // DefaultEntityUpdate
             // 
+            this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(284, 99);
             this.Controls.Add(this.lblEntityName);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DefaultEntityUpdate";
             this.Text = "DefaultEntityUpdate";
             this.ResumeLayout(false);

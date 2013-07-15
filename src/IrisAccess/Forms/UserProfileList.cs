@@ -1,32 +1,21 @@
-﻿using Model;
+﻿using IrisAccess.Extensions;
+using Model;
+using Model.Repositories.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace IrisAccess
+namespace IrisAccess.Forms
 {
-    public partial class DefaultEntityList<TEntity> : Form where TEntity : DefaultEntity, new()
+    public partial class UserProfileList : BaseForm
     {
-        private DefaultEntityRepository<TEntity>  _repository;
-        private AppDbContext _context;
-        private string _entityName;
+        private IGenericUpdatableRepository<UserProfile> _repository;
 
-        public DefaultEntityList(string entityName)
+        public UserProfileList()
         {
             InitializeComponent();
-            
-            _context = Program.Container.Resolve<AppDbContext>();
-            _repository = new DefaultEntityRepository<TEntity>(_context);
-            _entityName = entityName;
 
+            _repository = new GenericUpdatableRepository<UserProfile>(this.DbContext);
             this.defaultEntityGrid.AutoGenerateColumns = false;
-            this.Text = entityName + "s";
             this.RefreshGrid();
         }
 
@@ -44,19 +33,23 @@ namespace IrisAccess
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            var createForm = new DefaultEntityUpdate<TEntity>(_entityName);
+            var createForm = new UserProfileUpdate();
             var result = createForm.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                _repository.Insert(createForm.DescriptionResult);
+                _repository.Insert(createForm.Result);
                 this.RefreshGrid();
             }
         }
 
         private void RefreshGrid(string term = null)
         {
-            var list = _repository.Get(_ => string.IsNullOrEmpty(term) || _.Description.Contains(term));
+            var list = _repository.Get(_ => string.IsNullOrEmpty(term) || 
+                _.FirstName.Contains(term) || 
+                _.LastName.Contains(term) || 
+                _.FileId.Contains(term) || 
+                _.Identification.Contains(term));
 
             txtSearch.Text = term;
             defaultEntityGrid.DataSource = list;
@@ -78,13 +71,12 @@ namespace IrisAccess
         {
             if (this.SelectedItem != null)
             {
-                var editForm = new DefaultEntityUpdate<TEntity>(_entityName, this.SelectedItem);
+                var editForm = new UserProfileUpdate(this.SelectedItem);
                 var result = editForm.ShowDialog();
 
                 if (result == DialogResult.OK)
                 {
                     var entityToUpdate = _repository.GetByID(this.SelectedItem.ID);
-                    entityToUpdate.Description = editForm.DescriptionResult;
                     _repository.Update(entityToUpdate);
 
                     this.RefreshGrid();
@@ -94,20 +86,20 @@ namespace IrisAccess
 
         private void DeleteSelected()
         {
-            if (this.SelectedItem != null && MessageBox.Show("¿Confirma que desea borrar el " + _entityName + " \"" + this.SelectedItem.Description + "\"?", _entityName + "s", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (this.SelectedItem != null && MessageBox.Show("¿Confirma que desea borrar el Usuario \"" + this.SelectedItem.FirstName + "\"?", "Usuarios", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 _repository.Delete(this.SelectedItem.ID);
                 this.RefreshGrid();
             }
         }
 
-        private TEntity SelectedItem
+        private UserProfile SelectedItem
         {
             get
             {
                 if (this.defaultEntityGrid.SelectedRows.Count > 0)
                 {
-                    return (TEntity)this.defaultEntityGrid.SelectedRows[0].DataBoundItem;
+                    return (UserProfile)this.defaultEntityGrid.SelectedRows[0].DataBoundItem;
                 }
 
                 return null;

@@ -37,8 +37,9 @@
             this.tileHorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.entitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,11 +47,12 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.windowsMenu,
-            this.entitiesToolStripMenuItem});
+            this.entitiesToolStripMenuItem,
+            this.usersToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(632, 24);
+            this.menuStrip.Size = new System.Drawing.Size(788, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -114,11 +116,18 @@
             this.entitiesToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.entitiesToolStripMenuItem.Text = "Entidades";
             // 
+            // usersToolStripMenuItem
+            // 
+            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.usersToolStripMenuItem.Text = "Usuarios";
+            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
+            // 
             // MDIParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 453);
+            this.ClientSize = new System.Drawing.Size(788, 499);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
@@ -143,6 +152,7 @@
         private System.Windows.Forms.ToolStripMenuItem arrangeIconsToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem entitiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
     }
 }
 

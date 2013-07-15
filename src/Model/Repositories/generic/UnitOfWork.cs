@@ -1,5 +1,4 @@
-﻿using Model.Repositories.impl;
-using Model.Repositories.interfaces;
+﻿using Model.Repositories.Interfaces;
 using ServiceStack.Logging;
 using System;
 using System.Data.Common;
@@ -10,7 +9,7 @@ namespace Model
     {
         private AppDbContext _appDbContext;
 
-        private IAttributesRepository _attributesRepository;
+        //private IAttributesRepository _attributesRepository;
 
         public ILog Logger { get; set; }
 
@@ -24,17 +23,17 @@ namespace Model
             return _appDbContext.Database.Connection;
         }
 
-        public IAttributesRepository AttributesRepository
-        {
-            get
-            {
-                if (this._attributesRepository == null)
-                {
-                    this._attributesRepository = new AttributesRepository(_appDbContext);
-                }
-                return _attributesRepository;
-            }
-        }
+        //public IAttributesRepository AttributesRepository
+        //{
+        //    get
+        //    {
+        //        if (this._attributesRepository == null)
+        //        {
+        //            this._attributesRepository = new AttributesRepository(_appDbContext);
+        //        }
+        //        return _attributesRepository;
+        //    }
+        //}
 
         public void Save()
         {

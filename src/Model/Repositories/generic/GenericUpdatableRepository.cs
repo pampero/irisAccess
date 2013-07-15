@@ -1,4 +1,5 @@
 ﻿using Model.Helpers;
+using Model.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +14,7 @@ namespace Model
         Expression<Func<TEntity, TType>> SortProperty;
     }
 
-    public class GenericUpdatableRepository<TEntity> where TEntity : AbstractUpdatableClass
+    public class GenericUpdatableRepository<TEntity> : IGenericUpdatableRepository<TEntity> where TEntity : AbstractUpdatableClass
     {
         internal AppDbContext context;
         internal DbSet<TEntity> dbSet;

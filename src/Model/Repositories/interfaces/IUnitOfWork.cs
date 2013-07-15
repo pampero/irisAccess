@@ -1,9 +1,7 @@
-﻿namespace Model.Repositories.interfaces
+﻿namespace Model.Repositories.Interfaces
 {
     public interface IUnitOfWork
     {
-        IAttributesRepository AttributesRepository { get; }
-
         void Save();
     }
 }
