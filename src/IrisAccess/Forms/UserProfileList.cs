@@ -77,6 +77,15 @@ namespace IrisAccess.Forms
                 if (result == DialogResult.OK)
                 {
                     var entityToUpdate = _repository.GetByID(this.SelectedItem.ID);
+
+                    entityToUpdate.FileId = editForm.Result.FileId;
+                    entityToUpdate.FirstName = editForm.Result.FirstName;
+                    entityToUpdate.LastName = editForm.Result.LastName;
+                    entityToUpdate.Identification = editForm.Result.Identification;
+                    entityToUpdate.IsMale = editForm.Result.IsMale;
+                    entityToUpdate.Birthdate = editForm.Result.Birthdate;
+                    entityToUpdate.Email = editForm.Result.Email;
+
                     _repository.Update(entityToUpdate);
 
                     this.RefreshGrid();

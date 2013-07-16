@@ -18,6 +18,15 @@ namespace IrisAccess.Forms
             else
             {
                 this.Text = "Modificación de Usuario \"" + entity.FullName + "\"";
+
+                txtFileId.Text = entity.FileId;
+                txtFirstName.Text = entity.FirstName;
+                txtLastName.Text = entity.LastName;
+                txtIdentification.Text = entity.Identification;
+                rbMale.Checked = entity.IsMale;
+                rbFemale.Checked = !entity.IsMale;
+                dtpBirthdate.Value = entity.Birthdate ?? DateTime.Now;
+                txtEmail.Text = entity.Email;
             }
         }
 
