@@ -63,7 +63,7 @@ namespace IrisAccess
             }
         }
 
-        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new UserProfileList();
             form.MdiParent = this;

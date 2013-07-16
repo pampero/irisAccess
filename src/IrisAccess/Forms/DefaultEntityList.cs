@@ -72,9 +72,7 @@ namespace IrisAccess.Forms
 
                 if (result == DialogResult.OK)
                 {
-                    var entityToUpdate = _repository.GetByID(item.ID);
-                    entityToUpdate.Description = editForm.Result.Description;
-                    _repository.Update(entityToUpdate);
+                    _repository.Update(editForm.Result);
 
                     this._grid.Refresh();
                 }

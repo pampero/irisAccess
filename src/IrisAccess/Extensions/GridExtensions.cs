@@ -9,7 +9,7 @@ namespace IrisAccess.Extensions
 {
     public static class GridExtensions
     {
-        public static GridInitializer<TEntity> Initialize<TEntity>(this DataGridView gridView)
+        public static GridInitializer<TEntity> Initialize<TEntity>(this DataGridView gridView) where TEntity : class
         {
             return new GridInitializer<TEntity>(gridView);
         }

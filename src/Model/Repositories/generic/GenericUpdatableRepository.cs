@@ -30,7 +30,7 @@ namespace Model
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
         {
-            IQueryable<TEntity> query = dbSet.AsNoTracking()
+            IQueryable<TEntity> query = dbSet
                 .Where(q => !q.IsDeleted);
 
             if (filter != null)

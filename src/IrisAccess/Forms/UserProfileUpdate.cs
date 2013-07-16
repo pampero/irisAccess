@@ -28,6 +28,8 @@ namespace IrisAccess.Forms
                 dtpBirthdate.Value = entity.Birthdate ?? DateTime.Now;
                 txtEmail.Text = entity.Email;
             }
+
+            this.Result = entity ?? new UserProfile();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -38,16 +40,13 @@ namespace IrisAccess.Forms
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            this.Result = new UserProfile
-            {
-                FileId = txtFileId.Text,
-                FirstName = txtFirstName.Text,
-                LastName = txtLastName.Text,
-                Identification = txtIdentification.Text,
-                IsMale = rbMale.Checked,
-                Birthdate = dtpBirthdate.Value,
-                Email = txtEmail.Text,
-            };
+            Result.FileId = txtFileId.Text;
+            Result.FirstName = txtFirstName.Text;
+            Result.LastName = txtLastName.Text;
+            Result.Identification = txtIdentification.Text;
+            Result.IsMale = rbMale.Checked;
+            Result.Birthdate = dtpBirthdate.Value;
+            Result.Email = txtEmail.Text;
 
             this.DialogResult = DialogResult.OK;
             this.Close();

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace IrisAccess.Extensions
 {
-    public class GridInitializer<TEntity>
+    public class GridInitializer<TEntity> where TEntity : class
     {
         private DataGridView _gridView;
         private TextBox _txtSearch;
