@@ -5,17 +5,9 @@ using System.Windows.Forms;
 
 namespace IrisAccess.Forms
 {
-    public partial class DefaultEntityUpdate<TEntity> : BaseForm where TEntity : DefaultEntity, new()
+    public partial class DefaultEntityUpdate<TEntity> : UpdateForm<TEntity> where TEntity : DefaultEntity, new()
     {
         private TEntity _entity;
-
-        public string DescriptionResult
-        {
-            get
-            {
-                return txtDescription.Text;
-            }
-        }
 
         public DefaultEntityUpdate(string entityName, TEntity entity = null)
         {
@@ -35,10 +27,10 @@ namespace IrisAccess.Forms
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            if (_entity != null)
+            this.Result = new TEntity
             {
-                _entity.Description = txtDescription.Text;
-            }
+                Description = txtDescription.Text,
+            };
 
             this.DialogResult = DialogResult.OK;
             this.Close();

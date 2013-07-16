@@ -5,10 +5,8 @@ using System.Windows.Forms;
 
 namespace IrisAccess.Forms
 {
-    public partial class UserProfileUpdate : BaseForm
+    public partial class UserProfileUpdate : UpdateForm<UserProfile>
     {
-        public UserProfile Result { get; protected set; }
-
         public UserProfileUpdate(UserProfile entity = null)
         {
             InitializeComponent();

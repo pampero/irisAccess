@@ -1,6 +1,7 @@
 ﻿using IrisAccess.Extensions;
 using Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace IrisAccess.Forms
@@ -9,6 +10,7 @@ namespace IrisAccess.Forms
     {
         private DefaultEntityRepository<TEntity>  _repository;
         private string _entityName;
+        private GridInitializer<TEntity> _grid;
 
         public DefaultEntityList(string entityName)
         {
@@ -17,21 +19,17 @@ namespace IrisAccess.Forms
             _repository = new DefaultEntityRepository<TEntity>(this.DbContext);
             _entityName = entityName;
 
-            this.defaultEntityGrid.AutoGenerateColumns = false;
             this.Text = entityName + "s";
-            this.RefreshGrid();
+
+            this._grid = this.defaultEntityGrid.Initialize<TEntity>()
+                .SetSearchButton(btnSearch)
+                .SetSearchText(txtSearch)
+                .SetSearchMethod(this.GetEntities);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            var term = txtSearch.Text;
-
-            this.RefreshGrid(term);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -41,17 +39,14 @@ namespace IrisAccess.Forms
 
             if (result == DialogResult.OK)
             {
-                _repository.Insert(createForm.DescriptionResult);
-                this.RefreshGrid();
+                _repository.Insert(createForm.Result);
+                this._grid.Refresh();
             }
         }
 
-        private void RefreshGrid(string term = null)
+        private IEnumerable<TEntity> GetEntities(string term = null)
         {
-            var list = _repository.Get(_ => string.IsNullOrEmpty(term) || _.Description.Contains(term));
-
-            txtSearch.Text = term;
-            defaultEntityGrid.DataSource = list;
+            return _repository.Get(_ => string.IsNullOrEmpty(term) || _.Description.Contains(term));
         }
 
         private void defaultEntityGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -68,41 +63,32 @@ namespace IrisAccess.Forms
 
         private void EditSelected()
         {
-            if (this.SelectedItem != null)
+            var item = this.defaultEntityGrid.GetSelected<TEntity>();
+
+            if (item != null)
             {
-                var editForm = new DefaultEntityUpdate<TEntity>(_entityName, this.SelectedItem);
+                var editForm = new DefaultEntityUpdate<TEntity>(_entityName, item);
                 var result = editForm.ShowDialog();
 
                 if (result == DialogResult.OK)
                 {
-                    var entityToUpdate = _repository.GetByID(this.SelectedItem.ID);
-                    entityToUpdate.Description = editForm.DescriptionResult;
+                    var entityToUpdate = _repository.GetByID(item.ID);
+                    entityToUpdate.Description = editForm.Result.Description;
                     _repository.Update(entityToUpdate);
 
-                    this.RefreshGrid();
+                    this._grid.Refresh();
                 }
             }
         }
 
         private void DeleteSelected()
         {
-            if (this.SelectedItem != null && MessageBox.Show("¿Confirma que desea borrar el " + _entityName + " \"" + this.SelectedItem.Description + "\"?", _entityName + "s", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                _repository.Delete(this.SelectedItem.ID);
-                this.RefreshGrid();
-            }
-        }
+            var item = this.defaultEntityGrid.GetSelected<TEntity>();
 
-        private TEntity SelectedItem
-        {
-            get
+            if (item != null && MessageBox.Show("¿Confirma que desea borrar el " + _entityName + " \"" + item.Description + "\"?", _entityName + "s", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (this.defaultEntityGrid.SelectedRows.Count > 0)
-                {
-                    return (TEntity)this.defaultEntityGrid.SelectedRows[0].DataBoundItem;
-                }
-
-                return null;
+                _repository.Delete(item.ID);
+                this._grid.Refresh();
             }
         }
 

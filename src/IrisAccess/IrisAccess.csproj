@@ -69,6 +69,11 @@
     <Compile Include="Extensions\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Extensions\GridInitializer.cs" />
+    <Compile Include="Extensions\GridExtensions.cs" />
+    <Compile Include="Extensions\UpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\UserProfileUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
