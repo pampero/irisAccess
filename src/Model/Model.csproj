@@ -98,6 +98,8 @@
     <Compile Include="Model\Abstractions\DefaultEntity.cs" />
     <Compile Include="Model\Entities\Address.cs" />
     <Compile Include="Model\Entities\Area.cs" />
+    <Compile Include="Model\Entities\Calendar.cs" />
+    <Compile Include="Model\Entities\Terminal.cs" />
     <Compile Include="Model\Entities\Door.cs" />
     <Compile Include="Model\Entities\HardwareModel.cs" />
     <Compile Include="Model\Interfaces\ICreateFields.cs" />
