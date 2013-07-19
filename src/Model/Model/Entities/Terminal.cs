@@ -1,29 +1,64 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
     public class Terminal : AbstractUpdatableClass
     {
-        public int? StartTime { get; set; }
+        [ForeignKey("Address")]
+        public int AddressID { get; set; }
+        public Address Address { get; set; }
 
-        public int? EndTime { get; set; }
+        [NotMapped]
+        public string AddressDescription
+        {
+            get
+            {
+                return this.Address != null ? Address.Description : null;
+            }
+        }
 
-        public DateTime? StartDate { get; set; }
+        [ForeignKey("Area")]
+        public int AreaID { get; set; }
+        public Area Area { get; set; }
 
-        public DateTime? EndDate { get; set; }
+        [NotMapped]
+        public string AreaDescription
+        {
+            get
+            {
+                return this.Area != null ? Area.Description : null;
+            }
+        }
 
-        public bool? OnMonday { get; set; }
+        [ForeignKey("Door")]
+        public int DoorID { get; set; }
+        public Door Door { get; set; }
 
-        public bool? OnTuesday { get; set; }
+        [NotMapped]
+        public string DoorDescription
+        {
+            get
+            {
+                return this.Door != null ? Door.Description : null;
+            }
+        }
 
-        public bool? OnWednesday { get; set; }
+        [ForeignKey("HardwareModel")]
+        public int HardwareModelID { get; set; }
+        public HardwareModel HardwareModel { get; set; }
 
-        public bool? OnThursday { get; set; }
+        [NotMapped]
+        public string HardwareModelDescription
+        {
+            get
+            {
+                return this.HardwareModel != null ? HardwareModel.Description : null;
+            }
+        }
 
-        public bool? OnFriday { get; set; }
-
-        public bool? OnSaturday { get; set; }
-
-        public bool? OnSunday { get; set; }
+        [StringLength(30)]
+        public string IP { get; set; }
     }
 }

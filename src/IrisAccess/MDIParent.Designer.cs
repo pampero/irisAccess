@@ -39,9 +39,10 @@
             this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calendariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.terminalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,7 +123,8 @@
             // 
             this.administrationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuariosToolStripMenuItem,
-            this.calendariosToolStripMenuItem});
+            this.calendariosToolStripMenuItem,
+            this.terminalesToolStripMenuItem});
             this.administrationToolStripMenuItem.Name = "administrationToolStripMenuItem";
             this.administrationToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.administrationToolStripMenuItem.Text = "Administración";
@@ -139,6 +141,13 @@
             this.calendariosToolStripMenuItem.Name = "calendariosToolStripMenuItem";
             this.calendariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.calendariosToolStripMenuItem.Text = "Calendarios";
+            // 
+            // terminalesToolStripMenuItem
+            // 
+            this.terminalesToolStripMenuItem.Name = "terminalesToolStripMenuItem";
+            this.terminalesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.terminalesToolStripMenuItem.Text = "Terminales";
+            this.terminalesToolStripMenuItem.Click += new System.EventHandler(this.terminalesToolStripMenuItem_Click);
             // 
             // MDIParent
             // 
@@ -172,6 +181,7 @@
         private System.Windows.Forms.ToolStripMenuItem administrationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem calendariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem terminalesToolStripMenuItem;
     }
 }
 

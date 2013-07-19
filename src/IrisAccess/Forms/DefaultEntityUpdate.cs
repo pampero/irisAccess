@@ -5,8 +5,10 @@ using System.Windows.Forms;
 
 namespace IrisAccess.Forms
 {
-    public partial class DefaultEntityUpdate<TEntity> : UpdateForm<TEntity> where TEntity : DefaultEntity, new()
+    public partial class DefaultEntityUpdate<TEntity> : Form where TEntity : DefaultEntity, new()
     {
+        public TEntity Result { get; protected set; }
+
         public DefaultEntityUpdate(string entityName, TEntity entity = null)
         {
             InitializeComponent();

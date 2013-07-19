@@ -16,6 +16,8 @@ namespace Model
         public DbSet<Area> Areas { get; set; }
         public DbSet<Door> Doors { get; set; }
         public DbSet<HardwareModel> HardwareModels { get; set; }
+        public DbSet<Calendar> Calendars { get; set; }
+        public DbSet<Terminal> Terminals { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

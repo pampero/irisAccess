@@ -28,7 +28,6 @@ namespace IrisAccess
             {
                 var form = new DefaultEntityList<TEntity>(entityName);
                 form.MdiParent = this;
-
                 form.Show();
             };
 
@@ -65,9 +64,18 @@ namespace IrisAccess
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new UserProfileList();
-            form.MdiParent = this;
+            Open<UserProfileList>();
+        }
 
+        private void terminalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Open<TerminalList>();
+        }
+
+        private void Open<TForm>() where TForm : Form, new()
+        {
+            var form = new TForm();
+            form.MdiParent = this;
             form.Show();
         }
     }
