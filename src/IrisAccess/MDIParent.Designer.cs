@@ -41,8 +41,8 @@
             this.administrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calendariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.terminalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,6 +141,7 @@
             this.calendariosToolStripMenuItem.Name = "calendariosToolStripMenuItem";
             this.calendariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.calendariosToolStripMenuItem.Text = "Calendarios";
+            this.calendariosToolStripMenuItem.Click += new System.EventHandler(this.calendariosToolStripMenuItem_Click);
             // 
             // terminalesToolStripMenuItem
             // 

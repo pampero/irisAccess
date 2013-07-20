@@ -71,6 +71,18 @@
     </Compile>
     <Compile Include="Extensions\GridInitializer.cs" />
     <Compile Include="Extensions\GridExtensions.cs" />
+    <Compile Include="Forms\CalendarList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CalendarList.Designer.cs">
+      <DependentUpon>CalendarList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CalendarUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CalendarUpdate.Designer.cs">
+      <DependentUpon>CalendarUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TerminalList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +128,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\CalendarList.resx">
+      <DependentUpon>CalendarList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CalendarUpdate.resx">
+      <DependentUpon>CalendarUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TerminalList.resx">
       <DependentUpon>TerminalList.cs</DependentUpon>
     </EmbeddedResource>

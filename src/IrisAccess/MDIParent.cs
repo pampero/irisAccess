@@ -72,6 +72,11 @@ namespace IrisAccess
             Open<TerminalList>();
         }
 
+        private void calendariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Open<CalendarList>();
+        }
+
         private void Open<TForm>() where TForm : Form, new()
         {
             var form = new TForm();
