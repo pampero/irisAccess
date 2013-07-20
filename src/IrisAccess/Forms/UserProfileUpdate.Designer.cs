@@ -232,9 +232,9 @@
             this.lblDescription.AutoSize = true;
             this.lblDescription.Location = new System.Drawing.Point(12, 9);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(70, 13);
+            this.lblDescription.Size = new System.Drawing.Size(93, 13);
             this.lblDescription.TabIndex = 5;
-            this.lblDescription.Text = "lblDescription";
+            this.lblDescription.Text = "Datos Personales:";
             // 
             // btnConfiguration
             // 
