@@ -47,6 +47,7 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.lblLastName = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
+            this.btnConfiguration = new System.Windows.Forms.Button();
             this.dataGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -235,6 +236,16 @@
             this.lblDescription.TabIndex = 5;
             this.lblDescription.Text = "lblDescription";
             // 
+            // btnConfiguration
+            // 
+            this.btnConfiguration.Location = new System.Drawing.Point(190, 232);
+            this.btnConfiguration.Name = "btnConfiguration";
+            this.btnConfiguration.Size = new System.Drawing.Size(86, 23);
+            this.btnConfiguration.TabIndex = 9;
+            this.btnConfiguration.Text = "Configuración";
+            this.btnConfiguration.UseVisualStyleBackColor = true;
+            this.btnConfiguration.Click += new System.EventHandler(this.btnConfiguration_Click);
+            // 
             // UserProfileUpdate
             // 
             this.AcceptButton = this.btnOk;
@@ -242,6 +253,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(517, 300);
+            this.Controls.Add(this.btnConfiguration);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.dataGroupBox);
             this.Controls.Add(this.btnOk);
@@ -277,5 +289,6 @@
         private System.Windows.Forms.RadioButton rbMale;
         private System.Windows.Forms.Label lblIdentification;
         private System.Windows.Forms.TextBox txtIdentification;
+        private System.Windows.Forms.Button btnConfiguration;
     }
 }

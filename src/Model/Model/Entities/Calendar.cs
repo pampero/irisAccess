@@ -5,6 +5,25 @@ namespace Model
 {
     public class Calendar : AbstractUpdatableClass
     {
+        [NotMapped]
+        public string Description
+        {
+            get
+            {
+                var s = DaysText;
+                if (StartTime != null && EndTime != null)
+                {
+                    s += (s.Length == 0 ? " " : "") + "de " + StartTimeText + "hs a " + EndTimeText + "hs";
+                }
+                if (StartDate != null && EndDate != null)
+                {
+                    s += (s.Length == 0 ? " " : "") + " desde " + StartDateText + " hasta " + EndDateText;
+                }
+
+                return s;
+            }
+        }
+
         public DateTime? StartTime { get; set; }
 
         [NotMapped]

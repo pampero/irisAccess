@@ -7,12 +7,13 @@ using System.Windows.Forms;
 
 namespace IrisAccess.Forms
 {
-    public partial class TerminalList : BaseForm
+    public partial class TerminalSearch : BaseForm
     {
+        public Terminal Result { get; protected set; }
         private IGenericUpdatableRepository<Terminal> _repository;
         private GridInitializer<Terminal> _grid;
 
-        public TerminalList()
+        public TerminalSearch()
         {
             InitializeComponent();
 
@@ -22,24 +23,14 @@ namespace IrisAccess.Forms
                 .SetSearchText(txtSearch)
                 .SetSearchMethod(this.GetEntities);
 
+            this.defaultEntityGrid.AutoGenerateColumns = false;
             this._grid.Refresh();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
-        }
-
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            var createForm = new TerminalUpdate();
-            var result = createForm.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                _repository.Insert(createForm.Result);
-                this._grid.Refresh();
-            }
         }
 
         private IEnumerable<Terminal> GetEntities(string term = null)
@@ -53,42 +44,6 @@ namespace IrisAccess.Forms
                     _.Area.Description.Contains(term),
                 includeProperties: "Address,Area,Door,HardwareModel"
             );
-        }
-
-        private void defaultEntityGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (this.defaultEntityGrid.Columns[e.ColumnIndex] == btnEdit)
-            {
-                EditSelected();
-            }
-            else if (this.defaultEntityGrid.Columns[e.ColumnIndex] == btnDelete)
-            {
-                DeleteSelected();
-            }
-        }
-
-        private void EditSelected()
-        {
-            if (this.SelectedItem != null)
-            {
-                var editForm = new TerminalUpdate(this.SelectedItem);
-                var result = editForm.ShowDialog();
-
-                if (result == DialogResult.OK)
-                {
-                    _repository.Update(editForm.Result);
-                    this._grid.Refresh();
-                }
-            }
-        }
-
-        private void DeleteSelected()
-        {
-            if (this.SelectedItem != null && MessageBox.Show("¿Confirma que desea borrar la Terminal \"" + this.SelectedItem.IP + "\"?", "Terminales", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                _repository.Delete(this.SelectedItem.ID);
-                this._grid.Refresh();
-            }
         }
 
         private Terminal SelectedItem
@@ -106,7 +61,9 @@ namespace IrisAccess.Forms
 
         private void defaultEntityGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.EditSelected();
+            this.DialogResult = DialogResult.OK;
+            this.Result = this.SelectedItem;
+            this.Close();
         }
     }
 }

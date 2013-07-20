@@ -17,8 +17,7 @@ namespace IrisAccess.Forms
 
             this._repository = new GenericUpdatableRepository<Calendar>(this.DbContext);
             this.defaultEntityGrid.AutoGenerateColumns = false;
-            this.defaultEntityGrid.AutoGenerateColumns = false;
-            this.Refresh();
+            this.RefreshGrid();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -34,11 +33,11 @@ namespace IrisAccess.Forms
             if (result == DialogResult.OK)
             {
                 _repository.Insert(createForm.Result);
-                this.Refresh();
+                this.RefreshGrid();
             }
         }
 
-        private void Refresh()
+        private void RefreshGrid()
         {
             this.defaultEntityGrid.DataSource = _repository.Get();
         }
@@ -65,7 +64,7 @@ namespace IrisAccess.Forms
                 if (result == DialogResult.OK)
                 {
                     _repository.Update(editForm.Result);
-                    this.Refresh();
+                    this.RefreshGrid();
                 }
             }
         }
@@ -75,7 +74,7 @@ namespace IrisAccess.Forms
             if (this.SelectedItem != null && MessageBox.Show("¿Confirma que desea borrar el Calendario \"" + this.SelectedItem.ID + "\"?", "Calendarios", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 _repository.Delete(this.SelectedItem.ID);
-                this.Refresh();
+                this.RefreshGrid();
             }
         }
 

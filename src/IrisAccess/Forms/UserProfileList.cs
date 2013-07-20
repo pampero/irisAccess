@@ -21,8 +21,6 @@ namespace IrisAccess.Forms
                 .SetSearchButton(btnSearch)
                 .SetSearchText(txtSearch)
                 .SetSearchMethod(this.GetEntities);
-
-            this.defaultEntityGrid.AutoGenerateColumns = false;
             this._grid.Refresh();
         }
 

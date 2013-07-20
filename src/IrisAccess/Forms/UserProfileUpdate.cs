@@ -63,5 +63,17 @@ namespace IrisAccess.Forms
         {
             rbMale.Checked = !rbFemale.Checked;
         }
+
+        private void btnConfiguration_Click(object sender, EventArgs e)
+        {
+            if (this.Result.ID == 0)
+            {
+                MessageBox.Show("Debe guardar el usuario antes de cambiar la configuración");
+                return;
+            }
+
+            var configurationForm = new UserCalendarTerminalList(this.Result);
+            var result = configurationForm.ShowDialog();
+        }
     }
 }

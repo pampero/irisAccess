@@ -1,6 +1,6 @@
 ﻿namespace IrisAccess.Forms
 {
-    partial class CalendarList
+    partial class UserCalendarTerminalList
     {
         /// <summary>
         /// Required designer variable.
@@ -32,15 +32,11 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.defaultEntityGrid = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Days = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.defaultEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.CalendarDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TerminalDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.defaultEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.defaultEntityGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.defaultEntityBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +45,7 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(762, 419);
+            this.btnClose.Location = new System.Drawing.Point(408, 360);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 5;
@@ -60,11 +56,11 @@
             // btnCreate
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Location = new System.Drawing.Point(762, 12);
+            this.btnCreate.Location = new System.Drawing.Point(359, 12);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.Size = new System.Drawing.Size(124, 23);
             this.btnCreate.TabIndex = 3;
-            this.btnCreate.Text = "Alta";
+            this.btnCreate.Text = "Agregar Configuración";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
@@ -75,12 +71,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.defaultEntityGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.defaultEntityGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.StartTime,
-            this.EndTime,
-            this.StartDate,
-            this.EndDate,
-            this.Days,
+            this.CalendarDescription,
+            this.TerminalDescription,
             this.btnEdit,
             this.btnDelete});
             this.defaultEntityGrid.Location = new System.Drawing.Point(12, 38);
@@ -88,55 +80,28 @@
             this.defaultEntityGrid.Name = "defaultEntityGrid";
             this.defaultEntityGrid.ReadOnly = true;
             this.defaultEntityGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.defaultEntityGrid.Size = new System.Drawing.Size(825, 375);
+            this.defaultEntityGrid.Size = new System.Drawing.Size(471, 316);
             this.defaultEntityGrid.TabIndex = 4;
             this.defaultEntityGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.defaultEntityGrid_CellContentClick);
             this.defaultEntityGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.defaultEntityGrid_CellDoubleClick);
             // 
-            // ID
+            // defaultEntityBindingSource
             // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "N°";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 50;
+            this.defaultEntityBindingSource.DataSource = typeof(Model.DefaultEntity);
             // 
-            // StartTime
+            // CalendarDescription
             // 
-            this.StartTime.DataPropertyName = "StartTimeText";
-            this.StartTime.HeaderText = "Hora Inicial";
-            this.StartTime.Name = "StartTime";
-            this.StartTime.ReadOnly = true;
-            this.StartTime.Width = 90;
+            this.CalendarDescription.DataPropertyName = "CalendarDescription";
+            this.CalendarDescription.HeaderText = "Calendario";
+            this.CalendarDescription.Name = "CalendarDescription";
+            this.CalendarDescription.ReadOnly = true;
             // 
-            // EndTime
+            // TerminalDescription
             // 
-            this.EndTime.DataPropertyName = "EndTimeText";
-            this.EndTime.HeaderText = "Hora Fin";
-            this.EndTime.Name = "EndTime";
-            this.EndTime.ReadOnly = true;
-            this.EndTime.Width = 90;
-            // 
-            // StartDate
-            // 
-            this.StartDate.DataPropertyName = "StartDateText";
-            this.StartDate.HeaderText = "Fecha Inicial";
-            this.StartDate.Name = "StartDate";
-            this.StartDate.ReadOnly = true;
-            // 
-            // EndDate
-            // 
-            this.EndDate.DataPropertyName = "EndDateText";
-            this.EndDate.HeaderText = "Fecha Fin";
-            this.EndDate.Name = "EndDate";
-            this.EndDate.ReadOnly = true;
-            // 
-            // Days
-            // 
-            this.Days.DataPropertyName = "DaysText";
-            this.Days.HeaderText = "Días";
-            this.Days.Name = "Days";
-            this.Days.ReadOnly = true;
+            this.TerminalDescription.DataPropertyName = "TerminalDescription";
+            this.TerminalDescription.HeaderText = "Terminal";
+            this.TerminalDescription.Name = "TerminalDescription";
+            this.TerminalDescription.ReadOnly = true;
             // 
             // btnEdit
             // 
@@ -154,21 +119,17 @@
             this.btnDelete.Text = "Borrar";
             this.btnDelete.UseColumnTextForButtonValue = true;
             // 
-            // defaultEntityBindingSource
-            // 
-            this.defaultEntityBindingSource.DataSource = typeof(Model.DefaultEntity);
-            // 
-            // CalendarList
+            // UserCalendarTerminalList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(849, 454);
+            this.ClientSize = new System.Drawing.Size(495, 395);
             this.Controls.Add(this.defaultEntityGrid);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnClose);
-            this.Name = "CalendarList";
-            this.Text = "Calendarios";
+            this.Name = "UserCalendarTerminalList";
+            this.Text = "Configuración de Terminales por Usuario";
             ((System.ComponentModel.ISupportInitialize)(this.defaultEntityGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.defaultEntityBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -181,12 +142,8 @@
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.BindingSource defaultEntityBindingSource;
         private System.Windows.Forms.DataGridView defaultEntityGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Days;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CalendarDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TerminalDescription;
         private System.Windows.Forms.DataGridViewButtonColumn btnEdit;
         private System.Windows.Forms.DataGridViewButtonColumn btnDelete;
     }

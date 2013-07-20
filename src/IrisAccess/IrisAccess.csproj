@@ -83,6 +83,30 @@
     <Compile Include="Forms\CalendarUpdate.Designer.cs">
       <DependentUpon>CalendarUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CalendarSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CalendarSearch.Designer.cs">
+      <DependentUpon>CalendarSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TerminalSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TerminalSearch.Designer.cs">
+      <DependentUpon>TerminalSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCalendarTerminalList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCalendarTerminalList.Designer.cs">
+      <DependentUpon>UserCalendarTerminalList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCalendarTerminalUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCalendarTerminalUpdate.Designer.cs">
+      <DependentUpon>UserCalendarTerminalUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TerminalList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +157,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CalendarUpdate.resx">
       <DependentUpon>CalendarUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CalendarSearch.resx">
+      <DependentUpon>CalendarSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TerminalSearch.resx">
+      <DependentUpon>TerminalSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCalendarTerminalList.resx">
+      <DependentUpon>UserCalendarTerminalList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCalendarTerminalUpdate.resx">
+      <DependentUpon>UserCalendarTerminalUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TerminalList.resx">
       <DependentUpon>TerminalList.cs</DependentUpon>

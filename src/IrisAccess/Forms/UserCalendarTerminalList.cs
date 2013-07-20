@@ -7,22 +7,20 @@ using System.Windows.Forms;
 
 namespace IrisAccess.Forms
 {
-    public partial class TerminalList : BaseForm
+    public partial class UserCalendarTerminalList : BaseForm
     {
-        private IGenericUpdatableRepository<Terminal> _repository;
-        private GridInitializer<Terminal> _grid;
+        private IGenericUpdatableRepository<UserCalendarTerminal> _repository;
+        private UserProfile _userProfile;
 
-        public TerminalList()
+        public UserCalendarTerminalList(UserProfile user)
         {
             InitializeComponent();
 
-            this._repository = new GenericUpdatableRepository<Terminal>(this.DbContext);
-            this._grid = this.defaultEntityGrid.Initialize<Terminal>()
-                .SetSearchButton(btnSearch)
-                .SetSearchText(txtSearch)
-                .SetSearchMethod(this.GetEntities);
-
-            this._grid.Refresh();
+            this._userProfile = user;
+            this._repository = new GenericUpdatableRepository<UserCalendarTerminal>(this.DbContext);
+            this.defaultEntityGrid.AutoGenerateColumns = false;
+            this.Text = "Configuración de Terminales para el Usuario " + user.FullName;
+            this.RefreshGrid();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -32,26 +30,21 @@ namespace IrisAccess.Forms
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            var createForm = new TerminalUpdate();
+            var createForm = new UserCalendarTerminalUpdate(_userProfile);
             var result = createForm.ShowDialog();
 
             if (result == DialogResult.OK)
             {
                 _repository.Insert(createForm.Result);
-                this._grid.Refresh();
+                this.RefreshGrid();
             }
         }
 
-        private IEnumerable<Terminal> GetEntities(string term = null)
+        private void RefreshGrid()
         {
-            return _repository.Get(
-                filter:_ => string.IsNullOrEmpty(term) || 
-                    _.IP.Contains(term) || 
-                    _.Address.Description.Contains(term) ||
-                    _.HardwareModel.Description.Contains(term) ||
-                    _.Door.Description.Contains(term) ||
-                    _.Area.Description.Contains(term),
-                includeProperties: "Address,Area,Door,HardwareModel"
+            this.defaultEntityGrid.DataSource = _repository.Get(
+                filter: _ => _.UserProfileID == _userProfile.ID,
+                includeProperties: "Calendar,UserProfile,Terminal"
             );
         }
 
@@ -71,33 +64,33 @@ namespace IrisAccess.Forms
         {
             if (this.SelectedItem != null)
             {
-                var editForm = new TerminalUpdate(this.SelectedItem);
+                var editForm = new UserCalendarTerminalUpdate(this.SelectedItem);
                 var result = editForm.ShowDialog();
 
                 if (result == DialogResult.OK)
                 {
                     _repository.Update(editForm.Result);
-                    this._grid.Refresh();
+                    this.RefreshGrid();
                 }
             }
         }
 
         private void DeleteSelected()
         {
-            if (this.SelectedItem != null && MessageBox.Show("¿Confirma que desea borrar la Terminal \"" + this.SelectedItem.IP + "\"?", "Terminales", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (this.SelectedItem != null && MessageBox.Show("¿Confirma que desea borrar la configuración?", "Configuraciones", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 _repository.Delete(this.SelectedItem.ID);
-                this._grid.Refresh();
+                this.RefreshGrid();
             }
         }
 
-        private Terminal SelectedItem
+        private UserCalendarTerminal SelectedItem
         {
             get
             {
                 if (this.defaultEntityGrid.SelectedRows.Count > 0)
                 {
-                    return (Terminal)this.defaultEntityGrid.SelectedRows[0].DataBoundItem;
+                    return (UserCalendarTerminal)this.defaultEntityGrid.SelectedRows[0].DataBoundItem;
                 }
 
                 return null;

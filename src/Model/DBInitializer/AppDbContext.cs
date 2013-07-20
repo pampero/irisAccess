@@ -18,6 +18,7 @@ namespace Model
         public DbSet<HardwareModel> HardwareModels { get; set; }
         public DbSet<Calendar> Calendars { get; set; }
         public DbSet<Terminal> Terminals { get; set; }
+        public DbSet<UserCalendarTerminal> UserCalendarTerminals { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

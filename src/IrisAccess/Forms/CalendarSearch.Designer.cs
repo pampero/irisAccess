@@ -1,6 +1,6 @@
 ﻿namespace IrisAccess.Forms
 {
-    partial class CalendarList
+    partial class CalendarSearch
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
             this.defaultEntityGrid = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,8 +37,6 @@
             this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Days = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.defaultEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.defaultEntityGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.defaultEntityBindingSource)).BeginInit();
@@ -49,24 +46,13 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(762, 419);
+            this.btnClose.Location = new System.Drawing.Point(530, 307);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 5;
-            this.btnClose.Text = "Cerrar";
+            this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Location = new System.Drawing.Point(762, 12);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
-            this.btnCreate.TabIndex = 3;
-            this.btnCreate.Text = "Alta";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // defaultEntityGrid
             // 
@@ -80,17 +66,14 @@
             this.EndTime,
             this.StartDate,
             this.EndDate,
-            this.Days,
-            this.btnEdit,
-            this.btnDelete});
-            this.defaultEntityGrid.Location = new System.Drawing.Point(12, 38);
+            this.Days});
+            this.defaultEntityGrid.Location = new System.Drawing.Point(12, 12);
             this.defaultEntityGrid.MultiSelect = false;
             this.defaultEntityGrid.Name = "defaultEntityGrid";
             this.defaultEntityGrid.ReadOnly = true;
             this.defaultEntityGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.defaultEntityGrid.Size = new System.Drawing.Size(825, 375);
+            this.defaultEntityGrid.Size = new System.Drawing.Size(593, 289);
             this.defaultEntityGrid.TabIndex = 4;
-            this.defaultEntityGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.defaultEntityGrid_CellContentClick);
             this.defaultEntityGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.defaultEntityGrid_CellDoubleClick);
             // 
             // ID
@@ -138,37 +121,20 @@
             this.Days.Name = "Days";
             this.Days.ReadOnly = true;
             // 
-            // btnEdit
-            // 
-            this.btnEdit.HeaderText = "Editar";
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.ReadOnly = true;
-            this.btnEdit.Text = "Editar";
-            this.btnEdit.UseColumnTextForButtonValue = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.HeaderText = "Borrar";
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.ReadOnly = true;
-            this.btnDelete.Text = "Borrar";
-            this.btnDelete.UseColumnTextForButtonValue = true;
-            // 
             // defaultEntityBindingSource
             // 
             this.defaultEntityBindingSource.DataSource = typeof(Model.DefaultEntity);
             // 
-            // CalendarList
+            // CalendarSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(849, 454);
+            this.ClientSize = new System.Drawing.Size(617, 342);
             this.Controls.Add(this.defaultEntityGrid);
-            this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnClose);
-            this.Name = "CalendarList";
-            this.Text = "Calendarios";
+            this.Name = "CalendarSearch";
+            this.Text = "Búsqueda de Calendarios";
             ((System.ComponentModel.ISupportInitialize)(this.defaultEntityGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.defaultEntityBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -178,7 +144,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.BindingSource defaultEntityBindingSource;
         private System.Windows.Forms.DataGridView defaultEntityGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
@@ -187,7 +152,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Days;
-        private System.Windows.Forms.DataGridViewButtonColumn btnEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn btnDelete;
     }
 }
