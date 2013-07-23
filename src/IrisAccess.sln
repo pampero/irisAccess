@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DA5572
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrisMonitor", "IrisMonitor\IrisMonitor.csproj", "{642D1B8C-FB97-45B8-92B1-9D784E43494D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{7F40D4F8-4300-4ECF-BC25-1F594B717BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F40D4F8-4300-4ECF-BC25-1F594B717BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F40D4F8-4300-4ECF-BC25-1F594B717BE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{642D1B8C-FB97-45B8-92B1-9D784E43494D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{642D1B8C-FB97-45B8-92B1-9D784E43494D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{642D1B8C-FB97-45B8-92B1-9D784E43494D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{642D1B8C-FB97-45B8-92B1-9D784E43494D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
