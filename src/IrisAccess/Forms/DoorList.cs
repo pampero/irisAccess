@@ -7,17 +7,17 @@ using System.Windows.Forms;
 
 namespace IrisAccess.Forms
 {
-    public partial class TerminalList : BaseForm
+    public partial class DoorList : BaseForm
     {
-        private IGenericUpdatableRepository<Terminal> _repository;
-        private GridInitializer<Terminal> _grid;
+        private IGenericUpdatableRepository<Door> _repository;
+        private GridInitializer<Door> _grid;
 
-        public TerminalList()
+        public DoorList()
         {
             InitializeComponent();
 
-            this._repository = new GenericUpdatableRepository<Terminal>(this.DbContext);
-            this._grid = this.defaultEntityGrid.Initialize<Terminal>()
+            this._repository = new GenericUpdatableRepository<Door>(this.DbContext);
+            this._grid = this.defaultEntityGrid.Initialize<Door>()
                 .SetSearchButton(btnSearch)
                 .SetSearchText(txtSearch)
                 .SetSearchMethod(this.GetEntities);
@@ -32,7 +32,7 @@ namespace IrisAccess.Forms
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            var createForm = new TerminalUpdate();
+            var createForm = new DoorUpdate();
             var result = createForm.ShowDialog();
 
             if (result == DialogResult.OK)
@@ -42,16 +42,14 @@ namespace IrisAccess.Forms
             }
         }
 
-        private IEnumerable<Terminal> GetEntities(string term = null)
+        private IEnumerable<Door> GetEntities(string term = null)
         {
             return _repository.Get(
                 filter:_ => string.IsNullOrEmpty(term) || 
-                    _.IP.Contains(term) || 
-                    _.HardwareModel.Description.Contains(term) ||
-                    _.Door.Area.Address.Description.Contains(term) ||
-                    _.Door.Area.Description.Contains(term) ||
-                    _.Door.Description.Contains(term),
-                includeProperties: "Door.Area.Address,Door.Area,Door,HardwareModel"
+                    _.Description.Contains(term) ||
+                    _.Area.Description.Contains(term) ||
+                    _.Area.Address.Description.Contains(term),
+                includeProperties: "Area,Area.Address"
             );
         }
 
@@ -71,7 +69,7 @@ namespace IrisAccess.Forms
         {
             if (this.SelectedItem != null)
             {
-                var editForm = new TerminalUpdate(this.SelectedItem);
+                var editForm = new DoorUpdate(this.SelectedItem);
                 var result = editForm.ShowDialog();
 
                 if (result == DialogResult.OK)
@@ -84,20 +82,20 @@ namespace IrisAccess.Forms
 
         private void DeleteSelected()
         {
-            if (this.SelectedItem != null && MessageBox.Show("¿Confirma que desea borrar la Terminal \"" + this.SelectedItem.IP + "\"?", "Terminales", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (this.SelectedItem != null && MessageBox.Show("¿Confirma que desea borrar la Puerta \"" + this.SelectedItem.Description + "\"?", "Puertas", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 _repository.Delete(this.SelectedItem.ID);
                 this._grid.Refresh();
             }
         }
 
-        private Terminal SelectedItem
+        private Door SelectedItem
         {
             get
             {
                 if (this.defaultEntityGrid.SelectedRows.Count > 0)
                 {
-                    return (Terminal)this.defaultEntityGrid.SelectedRows[0].DataBoundItem;
+                    return (Door)this.defaultEntityGrid.SelectedRows[0].DataBoundItem;
                 }
 
                 return null;

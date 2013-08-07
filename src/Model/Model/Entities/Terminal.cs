@@ -6,29 +6,21 @@ namespace Model
 {
     public class Terminal : AbstractUpdatableClass
     {
-        [ForeignKey("Address")]
-        public int AddressID { get; set; }
-        public Address Address { get; set; }
-
         [NotMapped]
         public string AddressDescription
         {
             get
             {
-                return this.Address != null ? Address.Description : null;
+                return this.Door != null && this.Door.Area != null && this.Door.Area.Address != null ? this.Door.Area.Address.Description : null;
             }
         }
-
-        [ForeignKey("Area")]
-        public int AreaID { get; set; }
-        public Area Area { get; set; }
 
         [NotMapped]
         public string AreaDescription
         {
             get
             {
-                return this.Area != null ? Area.Description : null;
+                return this.Door != null && this.Door.Area != null ? this.Door.Area.Description : null;
             }
         }
 
@@ -41,7 +33,7 @@ namespace Model
         {
             get
             {
-                return this.Door != null ? Door.Description : null;
+                return this.Door != null ? this.Door.Description : null;
             }
         }
 

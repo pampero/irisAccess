@@ -12,9 +12,27 @@ namespace IrisAccess
             InitializeComponent();
 
             this.AddDefaultEntityMenu<HardwareModel>("Modelo");
-            this.AddDefaultEntityMenu<Area>("Area");
-            this.AddDefaultEntityMenu<Door>("Puerta");
             this.AddDefaultEntityMenu<Address>("Edificio");
+
+            this.AddEntityMenu<AreaList>("Área");
+            this.AddEntityMenu<DoorList>("Puerta");
+        }
+
+        private void AddEntityMenu<TForm>(string entityName) where TForm : Form, new()
+        {
+            var item = new ToolStripMenuItem
+            {
+                Text = entityName + "s",
+            };
+
+            item.Click += delegate(object o, EventArgs e)
+            {
+                var form = new TForm();
+                form.MdiParent = this;
+                form.Show();
+            };
+
+            entitiesToolStripMenuItem.DropDownItems.Add(item);
         }
 
         private void AddDefaultEntityMenu<TEntity>(string entityName) where TEntity : DefaultEntity, new()

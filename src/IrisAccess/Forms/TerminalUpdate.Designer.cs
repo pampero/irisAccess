@@ -84,6 +84,7 @@
             this.cmbAddress.Size = new System.Drawing.Size(180, 21);
             this.cmbAddress.TabIndex = 1;
             this.cmbAddress.ValueMember = "ID";
+            this.cmbAddress.SelectedValueChanged += new System.EventHandler(this.cmbAddress_SelectedValueChanged);
             // 
             // cmbArea
             // 
@@ -95,6 +96,7 @@
             this.cmbArea.Size = new System.Drawing.Size(180, 21);
             this.cmbArea.TabIndex = 2;
             this.cmbArea.ValueMember = "ID";
+            this.cmbArea.SelectedValueChanged += new System.EventHandler(this.cmbArea_SelectedValueChanged);
             // 
             // lblArea
             // 

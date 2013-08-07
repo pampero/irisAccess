@@ -38,11 +38,11 @@ namespace IrisAccess.Forms
             return _repository.Get(
                 filter:_ => string.IsNullOrEmpty(term) || 
                     _.IP.Contains(term) || 
-                    _.Address.Description.Contains(term) ||
-                    _.HardwareModel.Description.Contains(term) ||
+                    _.Door.Area.Address.Description.Contains(term) ||
+                    _.Door.Area.Description.Contains(term) ||
                     _.Door.Description.Contains(term) ||
-                    _.Area.Description.Contains(term),
-                includeProperties: "Address,Area,Door,HardwareModel"
+                    _.HardwareModel.Description.Contains(term),
+                includeProperties: "Door.Area.Address,Door.Area,Door,HardwareModel"
             );
         }
 

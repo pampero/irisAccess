@@ -15,8 +15,6 @@ namespace IrisAccess.Forms
             InitializeComponent();
 
             cmbAddress.DataSource = this.DbContext.Addresses.Where(a => !a.IsDeleted).ToList();
-            cmbArea.DataSource = this.DbContext.Areas.Where(a => !a.IsDeleted).ToList();
-            cmbDoor.DataSource = this.DbContext.Doors.Where(a => !a.IsDeleted).ToList();
             cmbHardwareModel.DataSource = this.DbContext.HardwareModels.Where(a => !a.IsDeleted).ToList();
 
             if (entity == null)
@@ -27,8 +25,8 @@ namespace IrisAccess.Forms
             {
                 this.Text = "Modificación de Terminal \"" + entity.IP + "\"";
 
-                cmbAddress.SelectedValue = entity.AddressID;
-                cmbArea.SelectedValue = entity.AreaID;
+                cmbAddress.SelectedValue = entity.Door.Area.AddressID;
+                cmbArea.SelectedValue = entity.Door.AreaID;
                 cmbDoor.SelectedValue = entity.DoorID;
                 txtIP.Text = entity.IP;
                 cmbHardwareModel.SelectedValue = entity.HardwareModelID;
@@ -45,14 +43,31 @@ namespace IrisAccess.Forms
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            Result.AddressID = (int)cmbAddress.SelectedValue;
-            Result.AreaID = (int)cmbArea.SelectedValue;
-            Result.DoorID = (int)cmbDoor.SelectedValue; ;
-            Result.IP = txtIP.Text;
-            Result.HardwareModelID = (int)cmbHardwareModel.SelectedValue;
+            if (cmbDoor.SelectedValue != null && cmbHardwareModel.SelectedValue != null && !string.IsNullOrEmpty(txtIP.Text.Trim()))
+            {
+                Result.DoorID = (int)cmbDoor.SelectedValue;
+                Result.IP = txtIP.Text;
+                Result.HardwareModelID = (int)cmbHardwareModel.SelectedValue;
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Faltan campos requeridos");
+            }
+        }
+
+        private void cmbAddress_SelectedValueChanged(object sender, EventArgs e)
+        {
+            var addressId = (int?)cmbAddress.SelectedValue;
+            cmbArea.DataSource = this.DbContext.Areas.Where(a => !a.IsDeleted && a.AddressID == addressId).ToList();
+        }
+
+        private void cmbArea_SelectedValueChanged(object sender, EventArgs e)
+        {
+            var areaId = (int?)cmbArea.SelectedValue;
+            cmbDoor.DataSource = this.DbContext.Doors.Where(a => !a.IsDeleted && a.AreaID == areaId).ToList();
         }
     }
 }

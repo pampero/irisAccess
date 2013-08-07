@@ -42,16 +42,23 @@ namespace IrisAccess.Forms
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            Result.FileId = txtFileId.Text;
-            Result.FirstName = txtFirstName.Text;
-            Result.LastName = txtLastName.Text;
-            Result.Identification = txtIdentification.Text;
-            Result.IsMale = rbMale.Checked;
-            Result.Birthdate = dtpBirthdate.Value;
-            Result.Email = txtEmail.Text;
+            if (!string.IsNullOrEmpty(txtFileId.Text.Trim()) && !string.IsNullOrEmpty(txtFirstName.Text.Trim()) && !string.IsNullOrEmpty(txtLastName.Text.Trim()) && !string.IsNullOrEmpty(txtIdentification.Text.Trim()))
+            {
+                Result.FileId = txtFileId.Text;
+                Result.FirstName = txtFirstName.Text;
+                Result.LastName = txtLastName.Text;
+                Result.Identification = txtIdentification.Text;
+                Result.IsMale = rbMale.Checked;
+                Result.Birthdate = dtpBirthdate.Value;
+                Result.Email = txtEmail.Text;
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Faltan campos requeridos");
+            }
         }
 
         private void rbMale_CheckedChanged(object sender, EventArgs e)

@@ -94,6 +94,30 @@
     <Compile Include="Forms\CalendarSearch.Designer.cs">
       <DependentUpon>CalendarSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AreaList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AreaList.Designer.cs">
+      <DependentUpon>AreaList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AreaUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AreaUpdate.Designer.cs">
+      <DependentUpon>AreaUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DoorList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DoorList.Designer.cs">
+      <DependentUpon>DoorList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DoorUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DoorUpdate.Designer.cs">
+      <DependentUpon>DoorUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TerminalSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +190,18 @@
     <EmbeddedResource Include="Forms\CalendarSearch.resx">
       <DependentUpon>CalendarSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AreaList.resx">
+      <DependentUpon>AreaList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AreaUpdate.resx">
+      <DependentUpon>AreaUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DoorList.resx">
+      <DependentUpon>DoorList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DoorUpdate.resx">
+      <DependentUpon>DoorUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TerminalSearch.resx">
       <DependentUpon>TerminalSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,7 +254,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
